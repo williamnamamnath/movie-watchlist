@@ -76,7 +76,7 @@ const RandomMovies = ({ onAdd }) => {
     return (
         <div className="my-5 p-2">
             <div className="d-flex justify-content-between align-items-center mb-4">
-                <h2 className="my-3" style={{ color: "white" }}>Discover Movies</h2>
+                <h2 className="my-3" style={{ color: "black" }}>Discover Movies</h2>
                 <span 
                     className="btn"
                     onClick={handleRefresh}
@@ -97,7 +97,7 @@ const RandomMovies = ({ onAdd }) => {
 
             <div className="row">
                 {movies.map((movie) => (
-                    <div key={movie.id} className="col-md-3 col-sm-6 mb-5 mx-5">
+                    <div key={movie.id} className="col-lg-3 col-md-4 col-sm-6 mb-4">
                         <div 
                             className="card h-100"
                             style={{ 

@@ -9,9 +9,9 @@ const AppNavbar = () => {
   const { user, logout } = useContext(AuthContext);
 
   return (
-    <Navbar variant="dark" expand="lg" className="mb-4 sticky-top" style={{ background: '#ffc371', boxShadow: '0 0 20px #1d2d44' }}>
+    <Navbar variant="dark" expand="lg" className="mb-4 sticky-top" style={{ background: '#f77f00', boxShadow: '0 0 20px #1d2d44' }}>
       <div className="container">
-        <Navbar.Brand as={Link} to="/" style={{ color: "black" }}>🎬 Movie Watchlist</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/" className='fw-semibold' style={{ color: "black" }}>🎬 Movie Watchlist</Navbar.Brand>
         <Navbar.Toggle aria-controls="nav" />
 
         <Navbar.Collapse id="nav">
@@ -27,14 +27,14 @@ const AppNavbar = () => {
             {user ? (
               <>
                 <Navbar.Text className="me-3" style={{ color: "black" }}>Welcome back, {user.firstName}</Navbar.Text>
-                <Nav.Link as={Link} to="/wheel" style={{ color: "black" }}>Wheel</Nav.Link>
+                {/* <Nav.Link as={Link} to="/wheel" style={{ color: "black" }}>Wheel</Nav.Link> */}
                 <Button variant="outline-light" style={{ color: "black" }} onClick={logout} >
                   Logout
                 </Button>
               </>
             ) : (
               <>
-                <Nav.Link as={Link} to="/wheel" style={{ color: "black" }}>Wheel</Nav.Link>
+                {/* <Nav.Link as={Link} to="/wheel" style={{ color: "black" }}>Wheel</Nav.Link> */}
                 <Nav.Link as={Link} to="/login" style={{ color: "black" }}>Login</Nav.Link>
                 <Nav.Link as={Link} to="/register" style={{ color: "black" }}>Register</Nav.Link>
               </>

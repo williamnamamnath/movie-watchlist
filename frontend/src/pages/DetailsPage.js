@@ -71,7 +71,7 @@ const DetailsPage = () => {
 
   if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center vh-100" style={{ color: "white" }}>
+      <div className="d-flex justify-content-center align-items-center vh-100" style={{ color: "black" }}>
         <div className="spinner-border" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
@@ -81,7 +81,7 @@ const DetailsPage = () => {
 
   if (error) {
     return (
-      <div className="container mt-4 text-center" style={{ color: "white" }}>
+      <div className="container mt-4 text-center" style={{ color: "black" }}>
         <div className="alert alert-danger">{error}</div>
       </div>
     )
@@ -89,7 +89,7 @@ const DetailsPage = () => {
 
 
   return (
-    <div className="container mt-4" style={{ color: "white" }}>
+    <div className="container mt-4" style={{ color: "black" }}>
       <div className="row">
         <div className="col-md-4 text-center my-5">
           <img
@@ -114,7 +114,7 @@ const DetailsPage = () => {
 
         <div className="col-md-8 my-5">
           <h2 className='mb-5'>{movie.Title}</h2>
-          <p className="text-light">
+          <p className="text-dark">
             {movie.Year} • {movie.Runtime} • {movie.Genre}
           </p>
           <p><strong>Director:</strong> {movie.Director}</p>

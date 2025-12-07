@@ -1,6 +1,7 @@
 const Movie = require('../models/Movie');
 const { searchMovies, getMovieByImdbID } = require('../services/omdbService');
 
+
 // Handler function to search movies via OMDB API
 exports.search = async (req, res) => {
   try {
@@ -48,6 +49,7 @@ exports.search = async (req, res) => {
   }
 }
 
+
 // Handler function to get movie details
 exports.getDetails = async (req, res) => {
   try {
@@ -59,7 +61,8 @@ exports.getDetails = async (req, res) => {
   }
 };
 
-// Handler function to get random movies
+
+// Handler function to get random movies (return 4 random movies)
 exports.getRandomMovies = async (req, res) => {
   try {
     const popularGenres = [
@@ -70,8 +73,15 @@ exports.getRandomMovies = async (req, res) => {
     
     const searchResults = await searchMovies(randomTerm, 1);
     
-    if (searchResults && searchResults.Search) {
-      const moviePromises = searchResults.Search.slice(0, 12).map(async (movie) => {
+    if (searchResults && Array.isArray(searchResults.Search) && searchResults.Search.length) {
+      const pool = [...searchResults.Search];
+      for (let i = pool.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pool[i], pool[j]] = [pool[j], pool[i]];
+      }
+      const selected = pool.slice(0, 4);
+
+      const moviePromises = selected.map(async (movie) => {
         try {
           const detailsResponse = await getMovieByImdbID(movie.imdbID);
           return {
@@ -86,19 +96,16 @@ exports.getRandomMovies = async (req, res) => {
             plot: detailsResponse.Plot || ''
           };
         } catch (err) {
-          if (err) {
-
-            return {
-              id: movie.imdbID,
-              title: movie.Title,
-              year: movie.Year,
-              poster: movie.Poster,
-              type: movie.Type,
-              imdbID: movie.imdbID,
-              imdbRating: 'N/A',
-              genre: '',
-              plot: ''
-            }
+          return {
+            id: movie.imdbID,
+            title: movie.Title,
+            year: movie.Year,
+            poster: movie.Poster,
+            type: movie.Type,
+            imdbID: movie.imdbID,
+            imdbRating: 'N/A',
+            genre: '',
+            plot: ''
           };
         }
       });
@@ -112,6 +119,7 @@ exports.getRandomMovies = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 }
+
 
 // Handler function for the user's current watchlist movies
 exports.list = async (req, res) => {
@@ -145,6 +153,7 @@ exports.list = async (req, res) => {
   }
 }
 
+
 // Handler function to add a movie to the user's watchlist
 exports.add = async (req, res) => {
   try {
@@ -177,6 +186,7 @@ exports.add = async (req, res) => {
   }
 }
 
+
 // Handler function to update a movie in the user's watchlist
 exports.update = async (req, res) => {
   try {
@@ -196,6 +206,7 @@ exports.update = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 }
+
 
 // Handler function to delete a movie from the user's watchlist
 exports.remove = async (req, res) => {

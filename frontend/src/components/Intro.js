@@ -20,12 +20,8 @@ const Intro = () => {
     ];
 
     return (
-        <section className="intro m-5 shadow-md" style={{ color: "white" }}>
-            <div className="intro-content p-3">
-                <h5 className="intro-description">
-                    Your personal movie companion for discovering, tracking, and organizing your favorite films.
-                </h5>
-                <br/>
+        <section className="intro m-5 shadow-md" style={{ color: "black" }}>
+            <div className="intro-content">
 
                 <div className="features">
                     <Carousel 

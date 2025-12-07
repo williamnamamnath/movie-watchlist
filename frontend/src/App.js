@@ -14,7 +14,7 @@ import './styles.css';
 
 const App = () => {
   return (
-    <div style={{ background: "black", color: "black", minHeight: "100vh", margin: 0, padding: 0 }}>
+    <div style={{ background: "#e3d5ca", color: "black", minHeight: "100vh", margin: 0, padding: 0 }}>
       <AuthProvider>
         <Router>
           <AppNavbar />
