@@ -20,7 +20,7 @@ const Intro = () => {
     ];
 
     return (
-        <section className="intro m-5 shadow-md" style={{ color: "black" }}>
+        <section className="intro m-5 shadow-md">
             <div className="intro-content">
 
                 <div className="features">
@@ -37,7 +37,7 @@ const Intro = () => {
                                     className="d-flex flex-column align-items-center justify-content-center text-center p-4"
                                     style={{ 
                                         minHeight: "200px",
-                                        backgroundColor: "#f8f9fa",
+                                        backgroundColor: "#fcbf49",
                                         borderRadius: "10px",
                                         border: "1px solid #e0e0e0"
                                     }}
@@ -45,7 +45,7 @@ const Intro = () => {
                                     <div style={{ fontSize: "3rem", marginBottom: "15px" }}>
                                         {feature.icon}
                                     </div>
-                                    <h4 className="mb-3" style={{ color: "#1d2d44" }}>
+                                    <h4 className="mb-3 fw-bold" style={{ color: "#1d2d44" }}>
                                         {feature.title}
                                     </h4>
                                     <p className="lead" style={{ color: "black" }}>

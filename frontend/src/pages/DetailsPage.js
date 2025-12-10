@@ -89,8 +89,8 @@ const DetailsPage = () => {
 
 
   return (
-    <div className="container mt-4" style={{ color: "black" }}>
-      <div className="row">
+    <div className="container mt-4">
+      <div className="row mb-5">
         <div className="col-md-4 text-center my-5">
           <img
             src={movie.Poster !== 'N/A' ? movie.Poster : '/placeholder.jpg'}
@@ -113,7 +113,8 @@ const DetailsPage = () => {
         </div>
 
         <div className="col-md-8 my-5">
-          <h2 className='mb-5'>{movie.Title}</h2>
+          <h2>{movie.Title}</h2>
+          <hr className='mb-4'/>
           <p className="text-dark">
             {movie.Year} • {movie.Runtime} • {movie.Genre}
           </p>

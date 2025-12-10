@@ -75,7 +75,7 @@ const RandomMovies = ({ onAdd }) => {
 
     return (
         <div className="my-5 p-2">
-            <div className="d-flex justify-content-between align-items-center mb-4">
+            <div className="d-flex justify-content-between align-items-center">
                 <h2 className="my-3" style={{ color: "black" }}>Discover Movies</h2>
                 <span 
                     className="btn"
@@ -94,16 +94,17 @@ const RandomMovies = ({ onAdd }) => {
                     )}
                 </span>
             </div>
+            <hr className='mb-5'/>
 
             <div className="row">
                 {movies.map((movie) => (
                     <div key={movie.id} className="col-lg-3 col-md-4 col-sm-6 mb-4">
                         <div 
-                            className="card h-100"
+                            className="card h-100 shadow-sm"
                             style={{ 
                                 cursor: 'pointer',
                                 transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
-                                backgroundColor: "#EBEBEB",
+                                backgroundColor: "white",
                                 boxShadow: 'none'
                             }}
                             onClick={() => handleMovieClick(movie.imdbID)}
@@ -123,7 +124,7 @@ const RandomMovies = ({ onAdd }) => {
                                 style={{ 
                                   height: '300px', 
                                   objectFit: 'contain',
-                                  backgroundColor: '#EBEBEB'
+                                  backgroundColor: 'white'
                                 }}
                             />
                             <div className="card-body">

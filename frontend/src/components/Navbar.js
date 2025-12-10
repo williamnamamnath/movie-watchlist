@@ -28,7 +28,7 @@ const AppNavbar = () => {
               <>
                 <Navbar.Text className="me-3" style={{ color: "black" }}>Welcome back, {user.firstName}</Navbar.Text>
                 {/* <Nav.Link as={Link} to="/wheel" style={{ color: "black" }}>Wheel</Nav.Link> */}
-                <Button variant="outline-light" style={{ color: "black" }} onClick={logout} >
+                <Button variant="outline-light" className='' style={{ color: "black" }} onClick={logout} >
                   Logout
                 </Button>
               </>

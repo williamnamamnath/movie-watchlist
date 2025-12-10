@@ -30,8 +30,10 @@ const Register = () => {
   
 
   return (
+    <>
     <div className="container my-5 p-4 p-md-5 rounded-3 shadow" style={{ maxWidth: '500px', border: '1px solid #ccc' }}>
-      <h2 className='text-center text-decoration-underline'>Register</h2>
+      <h2 className='text-center'>Register</h2>
+      <hr className='w-50 mx-auto'/>
       <br/>
       <h6 className='text-center'>Create your account to to make the most out of <span style={{ color: "#f77f00" }}>Movie Watchlist</span>.</h6>
 
@@ -55,6 +57,9 @@ const Register = () => {
         </div>
       </form>
     </div>
+      <br/>
+      <br/>
+    </>
   )
 };
 
