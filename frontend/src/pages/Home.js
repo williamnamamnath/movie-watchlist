@@ -54,7 +54,7 @@ const Home = () => {
       </div>
       
       <div className="d-flex justify-content-center">
-        <div className="border rounded p-2 my-5 shadow-sm" style={{ maxWidth: '40vw', minWidth: '300px', width: '100%', border: '1px solid #1d2d44' }}>
+        <div className="p-2 my-5" style={{ maxWidth: '40vw', minWidth: '300px', width: '100%' }}>
           <h2 className="text-center my-3" style={{ color: "black" }}>Search for Movies</h2>
           <SearchBar onSearch={handleSearch} />
           <br/>
@@ -64,7 +64,7 @@ const Home = () => {
 
       {loading && (
         <div className="d-flex justify-content-center mt-4">
-          <div className="spinner-border text-light" role="status">
+          <div className="spinner-border text-dark" role="status">
             <span className="visually-hidden">Loading...</span>
           </div>
         </div>

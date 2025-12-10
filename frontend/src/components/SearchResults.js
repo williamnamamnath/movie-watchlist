@@ -32,7 +32,7 @@ const SearchResults = ({ results, searchQuery, onAdd }) => {
   return (
     <div className="container my-5 p-4">
       <div className="row">
-        <h2 className="my-5" style={{ color: "white" }}>Search Results for "{searchQuery}"</h2>
+        <h2 className="my-5">Search Results for "{searchQuery}"</h2>
         {results.map((movie) => (
           <div key={movie.imdbID} className="col-md-3 mb-4">
             <div 

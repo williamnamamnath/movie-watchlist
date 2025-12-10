@@ -33,7 +33,7 @@ const Login = () => {
   
 
   return (
-    <div className="container my-5 p-5 rounded-3 shadow" style={{ maxWidth: '20vw', border: '1px solid #ccc', color: "white" }}>
+    <div className="container my-5 p-4 p-md-5 rounded-3 shadow" style={{ maxWidth: '500px', border: '1px solid #ccc' }}>
       <h2 className='text-center text-decoration-underline'>Login</h2>
       <br/>
       <h6 className='text-center'>Sign in to organize your watchlist more efficiently.</h6>
