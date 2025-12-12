@@ -9,10 +9,12 @@ import Login from './pages/Login';
 import Watchlist from './pages/Watchlist';
 import Home from './pages/Home';
 import DetailsPage from './pages/DetailsPage';
+import SearchPage from './pages/SearchPage';
 
 import './styles.css';
 
 const App = () => {
+
   return (
     <div style={{ background: "white", color: "black", minHeight: "100vh", margin: 0, padding: 0 }}>
       <AuthProvider>
@@ -20,6 +22,7 @@ const App = () => {
           <AppNavbar />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/search" element={<SearchPage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/wheel" element={<Wheel />} />
