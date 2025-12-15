@@ -1,18 +1,24 @@
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+
 import API from '../api';
 
 const SearchResults = ({ results, searchQuery, onAdd }) => {
   
   const navigate = useNavigate();
 
+  const [addedMovies, setAddedMovies] = useState(new Set());
+
   // Function to add movies to the user's watchlist
-  const handleAdd = async (movie) => {
+  const handleAdd = async (movie, imdbID) => {
+
     try {
-      const res = await API.post('/movies', movie)
-      onAdd(res.data)      
+      const res = await API.post('/movies', movie);
+      onAdd(res.data);
+      setAddedMovies(prev => new Set([...prev, imdbID]));
       alert(`"${movie.title}" has been added to your watchlist successfully.`);
     } catch (err) {
-      if (err.status === 400)
+      if (err.response?.status === 400)
         alert('This movie is already in your watchlist.')
       else
         alert('Failed to add movie. Please sign in to add movies to your watchlist.')
@@ -34,7 +40,7 @@ const SearchResults = ({ results, searchQuery, onAdd }) => {
       <div className="row">
         <h2 className="my-5">Search Results for "{searchQuery}"</h2>
         {results.map((movie) => (
-          <div key={movie.imdbID} className="col-md-3 mb-4">
+          <div key={movie.imdbID} className="col-sm-6 col-md-4 col-lg-3 mb-4">
             <div 
               className="card h-100 shadow-sm" 
               style={{ 
@@ -80,7 +86,8 @@ const SearchResults = ({ results, searchQuery, onAdd }) => {
                 
                 <div className="d-flex justify-content-center">
                   <button
-                      className="btn btn-success w-75 my-3"
+                      className="btn btn-success my-3"
+                      disabled={addedMovies.has(movie.imdbID)}
                       onClick={(e) => {
                           e.stopPropagation();
                           handleAdd({
@@ -90,10 +97,10 @@ const SearchResults = ({ results, searchQuery, onAdd }) => {
                           imdbRating: movie.imdbRating,
                           poster: movie.Poster,
                           type: movie.Type,
-                          })
+                          }, movie.imdbID)
                       }}
                       >
-                      + Add to Watchlist
+                      {addedMovies.has(movie.imdbID) ? 'Added' : '+ Add to Watchlist'}
                   </button>
               </div>
 

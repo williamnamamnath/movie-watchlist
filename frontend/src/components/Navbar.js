@@ -16,36 +16,44 @@ const AppNavbar = () => {
 
   return (
     <Navbar variant="dark" expand="lg" className="mb-4 sticky-top" style={{ background: '#f77f00', boxShadow: '0 0 20px #1d2d44' }}>
-      <div className="container">
-        <Navbar.Brand as={Link} to="/" className='fw-semibold' style={{ color: "black" }}>🎬 Movie Watchlist</Navbar.Brand>
-          <div className="mx-auto" style={{ maxWidth: '500px', width: '100%' }}>
-            <SearchBar onSearch={handleSearch} />
-          </div>
+      <div className="container-fluid">
+        <Navbar.Brand as={Link} to="/" className='fw-semibold' style={{ color: "black" }}>
+          🎬 Movie Watchlist
+        </Navbar.Brand>
+        
+        <div className="d-lg-none mx-auto" style={{ maxWidth: '500px', width: '100%', flex: '1' }}>
+          <SearchBar onSearch={handleSearch} />
+        </div>
+        
         <Navbar.Toggle aria-controls="nav" />
 
         <Navbar.Collapse id="nav">
           <Nav className="me-auto">
             {user && (
-              <Nav.Link as={Link} to="/watchlist" className='mx-auto' style={{ color: "black" }}>
-                My Watchlist
+              <Nav.Link as={Link} to="/watchlist" style={{ color: "black" }} className='my-3 mx-auto text-decoration-underline'><span className='fw-semibold'>
+                {user.firstName}</span>'s Watchlist
               </Nav.Link>
             )}
           </Nav>
-          <Nav>
-            <br/>
+
+          <div className="d-none d-lg-block mx-auto my-2 my-lg-0" style={{ maxWidth: '500px', width: '100%' }}>
+            <SearchBar onSearch={handleSearch} />
+          </div>
+
+          <Nav className="ms-auto">
             {user ? (
               <>
-                <Navbar.Text className="mx-auto fw-bold" style={{ color: "black" }}>Welcome back, {user.firstName}</Navbar.Text>
-                {/* <Nav.Link as={Link} to="/wheel" style={{ color: "black" }}>Wheel</Nav.Link> */}
-                <Button variant="outline-light" className='w-50 mx-auto' style={{ color: "black" }} onClick={logout} >
-                  Logout
-                </Button>
+                <button type="button" 
+                className="btn-grad mx-auto" 
+                onClick={logout} 
+                data-mdb-ripple-init
+                >Logout
+                </button>
               </>
             ) : (
               <>
-                {/* <Nav.Link as={Link} to="/wheel" style={{ color: "black" }}>Wheel</Nav.Link> */}
-                <Nav.Link as={Link} to="/login" style={{ color: "black" }}>Login</Nav.Link>
-                <Nav.Link as={Link} to="/register" style={{ color: "black" }}>Register</Nav.Link>
+                <Nav.Link as={Link} to="/login" style={{ color: "black" }} className='mx-auto'>Login</Nav.Link>
+                <Nav.Link as={Link} to="/register" style={{ color: "black" }} className='mx-auto'>Register</Nav.Link>
               </>
             )}
           </Nav>

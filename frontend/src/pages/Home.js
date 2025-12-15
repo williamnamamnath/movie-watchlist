@@ -13,6 +13,10 @@ const Home = () => {
     document.title = "Home - Movie Watchlist";
   }, []);
 
+  const handleAddMovie = (movie) => {
+    console.log('Movie added to watchlist:', movie);
+  };
+
 
   return (
     <div className="container">
@@ -24,7 +28,7 @@ const Home = () => {
             <span style={{ color: "#f77f00" }}>Movie Watchlist</span></h1>
             <hr/>
             <p className="intro-description text-center">
-                    Your personal movie companion for discovering, tracking, and organizing your favorite films.
+                    Your personal companion to discover, track and organize your favorite movies and TV shows.
                 </p>
                 <SpacingBottom />
           <Intro />
@@ -40,7 +44,7 @@ const Home = () => {
         </div>
       )}
 
-      <RandomMovies />
+      <RandomMovies onAdd={handleAddMovie} />
     </div>
   )
 };

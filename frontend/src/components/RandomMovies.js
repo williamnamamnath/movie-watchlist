@@ -9,6 +9,9 @@ const RandomMovies = ({ onAdd }) => {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [addedMovies, setAddedMovies] = useState(new Set());
+
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -27,16 +30,20 @@ const RandomMovies = ({ onAdd }) => {
     }, []);
 
         // Function to add movies to the user's watchlist
-        const handleAdd = async (movie) => {
-        try {
-        const res = await API.post('/movies', movie)
-        onAdd(res.data)
-        } catch (err) {
-        if (err.status === 400)
+        const handleAdd = async (movie, imdbID) => {
+
+        try {        
+        const res = await API.post('/movies', movie);
+        onAdd(res.data);
+        setAddedMovies(prev => new Set([...prev, imdbID]));
+        alert(`"${movie.title}" has been added to your watchlist successfully.`);
+        } catch (err) {       
+        if (err.response?.status === 400)
             alert('This movie is already in your watchlist.')
+        else if (err.response?.status === 401)
+            alert('Please sign in to add movies to your watchlist.')
         else
-            alert('Failed to add movie. Please sign in to add movies to your watchlist.')
-        console.log(err.response);
+            alert('Failed to add movie: ' + (err.response?.data?.message || err.message))
         }
         
     };
@@ -98,7 +105,7 @@ const RandomMovies = ({ onAdd }) => {
 
             <div className="row">
                 {movies.map((movie) => (
-                    <div key={movie.id} className="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div key={movie.id} className="col-sm-6 col-md-4 col-lg-3 mb-4">
                         <div 
                             className="card h-100 shadow-sm"
                             style={{ 
@@ -143,18 +150,20 @@ const RandomMovies = ({ onAdd }) => {
                             <div className="d-flex justify-content-center">
                                 <button
                                     className="btn btn-success w-75 mb-3"
+                                    disabled={addedMovies.has(movie.imdbID)}
                                     onClick={(e) => {
                                         e.stopPropagation()
                                         handleAdd({
                                         title: movie.title,
                                         year: movie.year,
                                         imdbID: movie.imdbID,
+                                        imdbRating: movie.imdbRating,
                                         poster: movie.poster,
                                         type: movie.type,
-                                        })
+                                        }, movie.imdbID)
                                     }}
                                     >
-                                    + Add to Watchlist
+                                    {addedMovies.has(movie.imdbID) ? 'Added' : '+ Add to Watchlist'}
                                 </button>
                             </div>
 

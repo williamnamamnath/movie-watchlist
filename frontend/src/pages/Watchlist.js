@@ -62,7 +62,7 @@ const Watchlist = () => {
       <h1 className="mb-5" style={{ color: "white" }}>My Watchlist</h1>
       <div className="row">
         {movies.map((movie) => (
-          <div key={movie._id} className="col-md-3 my-4 p-4">
+          <div key={movie._id} className="col-sm-6 col-md-4 col-lg-3 mb-4">
             <div className="card h-100 shadow-sm" 
             style={{ cursor: "pointer", transition: 'transform 0.2s ease-in-out' }} 
             onClick={() => handleMovieClick(movie.imdbID)}
@@ -94,7 +94,7 @@ const Watchlist = () => {
                     setMovies(movies.filter((m) => m._id !== movie._id))
                     alert(`"${movie.title}" has been removed from your watchlist successfully.`);
                   }}
-                  className="btn btn-danger w-100"
+                  className="btn btn-danger w-100 my-3"
                 >
                   Remove
                 </button>
