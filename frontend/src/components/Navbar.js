@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import SearchBar from './SearchBar';
 
-import { Navbar, Nav, Button } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 
 const AppNavbar = () => {
 
@@ -15,23 +15,23 @@ const AppNavbar = () => {
   };
 
   return (
-    <Navbar variant="dark" expand="lg" className="mb-4 sticky-top" style={{ background: '#f77f00', boxShadow: '0 0 20px #1d2d44' }}>
+    <Navbar variant="dark" expand="lg" className="sticky-top" style={{ background: '#f77f00', boxShadow: '0 0 20px #1d2d44' }}>
       <div className="container-fluid">
         <Navbar.Brand as={Link} to="/" className='fw-semibold' style={{ color: "black" }}>
           🎬 Movie Watchlist
         </Navbar.Brand>
         
-        <div className="d-lg-none mx-auto" style={{ maxWidth: '500px', width: '100%', flex: '1' }}>
-          <SearchBar onSearch={handleSearch} />
-        </div>
-        
         <Navbar.Toggle aria-controls="nav" />
 
         <Navbar.Collapse id="nav">
+          <div className="d-lg-none w-100 mt-3">
+            <SearchBar onSearch={handleSearch} />
+          </div>
+
           <Nav className="me-auto">
             {user && (
-              <Nav.Link as={Link} to="/watchlist" style={{ color: "black" }} className='my-3 mx-auto text-decoration-underline'><span className='fw-semibold'>
-                {user.firstName}</span>'s Watchlist
+              <Nav.Link as={Link} to="/watchlist" style={{ color: "black" }} className='mx-auto my-2 text-decoration-underline'>
+                {user.firstName}'s Watchlist
               </Nav.Link>
             )}
           </Nav>
@@ -43,11 +43,11 @@ const AppNavbar = () => {
           <Nav className="ms-auto">
             {user ? (
               <>
-                <button type="button" 
-                className="btn-grad mx-auto" 
-                onClick={logout} 
-                data-mdb-ripple-init
-                >Logout
+              <button 
+              type="button" 
+              className="btn btn-danger" 
+              onClick={logout}>
+                Logout
                 </button>
               </>
             ) : (

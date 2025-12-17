@@ -16,7 +16,7 @@ import './styles.css';
 const App = () => {
 
   return (
-    <div style={{ background: "white", color: "black", minHeight: "100vh", margin: 0, padding: 0 }}>
+    <div className='d-flex flex-column min-vh-100' style={{ background: "white", color: "black", minHeight: "100vh", margin: 0, padding: 0 }}>
       <AuthProvider>
         <Router>
           <AppNavbar />

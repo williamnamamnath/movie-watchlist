@@ -5,6 +5,8 @@ import Intro from '../components/Intro';
 import SpacingTop from '../components/SpacingTop';
 import SpacingBottom from '../components/SpacingBottom';
 
+import heroImg from '../images/hero-section-image.png';
+
 const Home = () => {
 
   const [loading, setLoading] = useState(false);
@@ -19,33 +21,36 @@ const Home = () => {
 
 
   return (
-    <div className="container">
-      <SpacingTop /> 
-      <div className="d-flex justify-content-center">
-        <div className="rounded p-2 mb-5 mt-5" style={{ maxWidth: '40vw', minWidth: '300px', width: '100%'}}>
-          <h1 className="text-center mb-3" style={{ color: "black" }}>Welcome to 
-            <br/>
-            <span style={{ color: "#f77f00" }}>Movie Watchlist</span></h1>
-            <hr/>
-            <p className="intro-description text-center">
-                    Your personal companion to discover, track and organize your favorite movies and TV shows.
-                </p>
-                <SpacingBottom />
-          <Intro />
-          <br/>
+    <>
+      <div className="container-fluid p-0">
+        <div className="position-relative">
+          <img 
+            src={heroImg} 
+            alt="Welcome to Movie Watchlist" 
+            className="img-fluid w-100" 
+            style={{ 
+              maxHeight: '100vh', 
+              objectFit: 'cover',
+              objectPosition: 'center'
+            }} 
+          />
         </div>
       </div>      
 
-      {loading && (
-        <div className="d-flex justify-content-center mt-4">
-          <div className="spinner-border text-dark" role="status">
-            <span className="visually-hidden">Loading...</span>
+      <div className="container">
+        <SpacingTop />
+        
+        {loading && (
+          <div className="d-flex justify-content-center mt-4">
+            <div className="spinner-border text-dark" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      <RandomMovies onAdd={handleAddMovie} />
-    </div>
+        <RandomMovies onAdd={handleAddMovie} />
+      </div>
+    </>
   )
 };
 
