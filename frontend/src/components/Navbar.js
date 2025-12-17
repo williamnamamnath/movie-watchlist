@@ -21,20 +21,21 @@ const AppNavbar = () => {
           🎬 Movie Watchlist
         </Navbar.Brand>
         
-        <Navbar.Toggle aria-controls="nav" />
-
-        <Navbar.Collapse id="nav">
-          <div className="d-lg-none w-100 mt-3">
-            <SearchBar onSearch={handleSearch} />
-          </div>
-
-          <Nav className="me-auto">
+          <Nav className="ms-auto me-2">
             {user && (
               <Nav.Link as={Link} to="/watchlist" style={{ color: "black" }} className='mx-auto my-2 text-decoration-underline'>
                 {user.firstName}'s Watchlist
               </Nav.Link>
             )}
           </Nav>
+          
+        <Navbar.Toggle aria-controls="nav" />
+
+        <Navbar.Collapse id="nav">
+          <div className="d-lg-none w-100 my-2">
+            <SearchBar onSearch={handleSearch} />
+          </div>
+
 
           <div className="d-none d-lg-block mx-auto my-2 my-lg-0" style={{ maxWidth: '500px', width: '100%' }}>
             <SearchBar onSearch={handleSearch} />
@@ -45,7 +46,7 @@ const AppNavbar = () => {
               <>
               <button 
               type="button" 
-              className="btn btn-danger" 
+              className="btn btn-danger my-2" 
               onClick={logout}>
                 Logout
                 </button>
