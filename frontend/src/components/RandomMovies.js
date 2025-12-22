@@ -107,22 +107,13 @@ const RandomMovies = ({ onAdd }) => {
                 {movies.map((movie) => (
                     <div key={movie.id} className="col-sm-6 col-md-4 col-lg-3 mb-4">
                         <div 
-                            className="card h-100 shadow-sm"
+                            className="card h-100"
                             style={{ 
                                 cursor: 'pointer',
-                                transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
                                 backgroundColor: "white",
-                                boxShadow: 'none'
+                                boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
                             }}
                             onClick={() => handleMovieClick(movie.imdbID)}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.transform = 'scale(1.02)';
-                                e.currentTarget.style.boxShadow = '0 8px 16px #1d2d44';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.transform = 'scale(1)';
-                                e.currentTarget.style.boxShadow = 'none';
-                            }}
                         >
                             <img 
                                 src={movie.poster !== 'N/A' ? movie.poster : '/placeholder-movie.jpg'} 
@@ -136,7 +127,7 @@ const RandomMovies = ({ onAdd }) => {
                             />
                             <div className="card-body">
                                 <h6 className="card-title text-primary">{movie.title}</h6>
-                                <p className="card-text text-muted">{movie.year}</p>
+                                <p className="card-text">{movie.year}</p>
                                 {movie.imdbRating && movie.imdbRating !== 'N/A' && (
                                     <div className="d-flex align-items-center mb-2">
                                         <span className="badge bg-warning text-dark me-2">

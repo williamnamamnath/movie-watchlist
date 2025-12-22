@@ -59,7 +59,7 @@ const Watchlist = () => {
 
   return (
     <div className="container my-5">
-      <h1 className="mb-5" style={{ color: "white" }}>My Watchlist</h1>
+      <h1 className="mb-5">My Watchlist</h1>
       <div className="row">
         {movies.map((movie) => (
           <div key={movie._id} className="col-sm-6 col-md-4 col-lg-3 mb-4">

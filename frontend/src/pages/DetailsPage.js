@@ -120,7 +120,7 @@ const DetailsPage = () => {
           </p>
           <p><strong>Director:</strong> {movie.Director}</p>
           <p><strong>Actors:</strong> {movie.Actors}</p>
-          <p><strong>Plot:</strong> {movie.Plot}</p>
+          <p><strong>Summary:</strong> {movie.Plot}</p>
           <p><strong>IMDB Rating:</strong> <span className="badge bg-warning text-dark me-2">
                         ⭐ {movie.imdbRating}
                       </span></p>

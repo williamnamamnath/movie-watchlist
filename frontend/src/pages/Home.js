@@ -39,7 +39,11 @@ const Home = () => {
 
       <div className="container">
         <SpacingTop />
-        
+        <Intro />
+      </div>
+
+      <div className="container">
+        <SpacingTop />
         {loading && (
           <div className="d-flex justify-content-center mt-4">
             <div className="spinner-border text-dark" role="status">
@@ -47,7 +51,6 @@ const Home = () => {
             </div>
           </div>
         )}
-
         <RandomMovies onAdd={handleAddMovie} />
       </div>
     </>
