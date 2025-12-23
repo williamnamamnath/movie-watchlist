@@ -1,3 +1,4 @@
 # Movie Watchlist App
 
-<img width="947" height="470" alt="home-page" src="https://github.com/user-attachments/assets/0dd79b39-f8b0-4afe-8716-7e7a6d2879ac" />
+<img width="649" height="365" alt="hero-section-image" src="https://github.com/user-attachments/assets/d33b1fa3-f016-4ac3-8268-04741a23f644" />
+
